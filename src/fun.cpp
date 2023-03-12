@@ -1,17 +1,17 @@
 // Copyright 2023 Kulikov
 #include <iostream>
+#include <cstring>
 #include "fun.h"
 
 
 unsigned int faStr1(const char* str) {
     int c = 0;
-    bool word = false; // защита от первого пробела 
-    bool number = false; // имеет ли цифры
-    for (int i = 0; i < strlen(str); i++)
-    {
-        if (isspace(str[i])) { // есть ли пробел
-            if (word && !number) { //если слово и не содержит цифр
-                c++; // увеличим кол-во слов
+    bool word = false;
+    bool number = false;
+    for (int i = 0; i < strlen(str); i++) {
+        if (isspace(str[i])) {
+            if (word && !number) {
+                c++;
             }
             word = false;
             number = false;
@@ -20,7 +20,7 @@ unsigned int faStr1(const char* str) {
             if (!word) {
                 word = true;
             }
-            if (isdigit(str[i])) { //есть ли число
+            if (isdigit(str[i])) {
                 number = true;
             }
         }
@@ -36,10 +36,10 @@ unsigned int faStr2(const char* str) {
     bool word = false;
     bool latin = false;
     bool space = false;
-    bool t = true; // проверка на 1 заглавную
-    bool z = false; // проверка на повторную заглавную букву
+    bool t = true;
+    bool z = false;
     for (int i = 0; i < strlen(str); i++) {
-        if (isspace(str[i])) { // пробел? da
+        if (isspace(str[i])) {
             if (latin && word && t) {
                 c++;
             }
@@ -47,13 +47,13 @@ unsigned int faStr2(const char* str) {
             latin = false;
             space = true;
         }
-        else { //net? Проверим стоит ли символ после пробела
+        else {
             if (space) {
                 space = false;
-                if (isalpha(str[i])) { //латинская буква или нет
+                if (isalpha(str[i])) {
                     latin = true;
                     t = true;
-                    if (isupper(str[i])) { // слово начинается с заглавной? da
+                    if (isupper(str[i])) {
                         word = true;
                         t = true;
                         z = true;
@@ -63,12 +63,12 @@ unsigned int faStr2(const char* str) {
                 else t = false;
             }
             else {
-                if (isalpha(str[i])) { //латинская буква или нет
+                if (isalpha(str[i])) {
                     latin = true;
                 }
                 else latin = false;
-                if (isupper(str[i])) { // слово начинается с заглавной? da // как проверить является ли слово 2 раз заглавн
-                    if (z) {//если 2 заглавная
+                if (isupper(str[i])) {
+                    if (z) {
                         word = false;
                     }
                     else {
@@ -90,10 +90,10 @@ unsigned int faStr3(const char* str) {
 
     int c = 0;
     int symbol = 0;
-    bool word = false; // защита от первого пробела 
+    bool word = false;
     for (int i = 0; i < strlen(str); i++)
     {
-        if (isspace(str[i])) { // есть ли пробел
+        if (isspace(str[i])) {
             word = false;
         }
         else {
@@ -104,6 +104,6 @@ unsigned int faStr3(const char* str) {
             symbol++;
         }
     }
-    float lenght = static_cast<double>(symbol) / c; //посчитаем среднюю длину
-    return round(lenght); //округлим
+    float lenght = static_cast<double>(symbol) / c;
+    return round(lenght);
 }
