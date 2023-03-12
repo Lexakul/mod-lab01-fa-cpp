@@ -15,8 +15,7 @@ unsigned int faStr1(const char* str) {
             }
             word = false;
             number = false;
-        }
-        else {
+        } else {
             if (!word) {
                 word = true;
             }
@@ -46,8 +45,7 @@ unsigned int faStr2(const char* str) {
             word = false;
             latin = false;
             space = true;
-        }
-        else {
+        } else {
             if (space) {
                 space = false;
                 if (isalpha(str[i])) {
@@ -58,20 +56,18 @@ unsigned int faStr2(const char* str) {
                         t = true;
                         z = true;
                     }
-                    else t = false;
+                    else { t = false; }
                 }
-                else t = false;
-            }
-            else {
+                else { t = false; }
+            } else {
                 if (isalpha(str[i])) {
                     latin = true;
                 }
-                else latin = false;
+                else { latin = false; }
                 if (isupper(str[i])) {
                     if (z) {
                         word = false;
-                    }
-                    else {
+                    } else {
                         word = true;
                         t = true;
                         z = true;
@@ -95,8 +91,7 @@ unsigned int faStr3(const char* str) {
     {
         if (isspace(str[i])) {
             word = false;
-        }
-        else {
+        } else {
             if (!word) {
                 word = true;
                 c++;
