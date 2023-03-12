@@ -55,15 +55,12 @@ unsigned int faStr2(const char* str) {
                         word = true;
                         t = true;
                         z = true;
-                    }
-                    else { t = false; }
-                }
-                else { t = false; }
+                    } else { t = false; }
+                } else { t = false; }
             } else {
                 if (isalpha(str[i])) {
                     latin = true;
-                }
-                else { latin = false; }
+                } else { latin = false; }
                 if (isupper(str[i])) {
                     if (z) {
                         word = false;
@@ -83,12 +80,10 @@ unsigned int faStr2(const char* str) {
 }
 
 unsigned int faStr3(const char* str) {
-
     int c = 0;
     int symbol = 0;
     bool word = false;
-    for (int i = 0; i < strlen(str); i++)
-    {
+    for (int i = 0; i < strlen(str); i++) {
         if (isspace(str[i])) {
             word = false;
         } else {
