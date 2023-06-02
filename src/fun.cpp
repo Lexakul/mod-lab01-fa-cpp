@@ -1,16 +1,18 @@
 // Kuznetsova Angelina 381907-3
+//файл с реализацией функции
+
 #include <iostream>
 #include <cstring>
-#include "fun.h"
+#include "fun.h" //заголовочный файл с заголовком функции.
 
-unsigned int faStr1(const char *str)
+unsigned int faStr1(const char *str) //ф-ция в переданной строке определяет слова, не содержащие цифр и подсчитывает кол-во таких слов
 {
-    int c = 0;
+    int c = 0; //кол-во нужных слов
     bool word = false;
     bool number = false;
     for (int i = 0; i < strlen(str); i++)
     {
-        if (isspace(str[i]))
+        if (isspace(str[i]))//ф-ция, проверяющая пробел (меняет character)
         {
             if (word && !number)
             {
@@ -25,7 +27,7 @@ unsigned int faStr1(const char *str)
             {
                 word = true;
             }
-            if (isdigit(str[i]))
+            if (isdigit(str[i]))//перебираем на наличие цифр
             {
                 number = true;
             }
@@ -38,9 +40,9 @@ unsigned int faStr1(const char *str)
     return c;
 }
 
-unsigned int faStr2(const char *str)
+unsigned int faStr2(const char *str)//ф-ция подсчитывает кол-во слов, начинающихся с загл лат буквы, другие символы только лат строчн в переданной строке
 {
-    int c = 0;
+    int c = 0; //кол-во нужных слов
     bool word = false;
     bool latin = false;
     bool space = false;
@@ -48,7 +50,7 @@ unsigned int faStr2(const char *str)
     bool z = false;
     for (int i = 0; i < strlen(str); i++)
     {
-        if (isspace(str[i]))
+        if (isspace(str[i]))//ф-ция, проверяющая пробел (меняет character)
         {
             if (latin && word && t)
             {
@@ -63,11 +65,11 @@ unsigned int faStr2(const char *str)
             if (space)
             {
                 space = false;
-                if (isalpha(str[i]))
+                if (isalpha(str[i]))//перебираем на наличие букв алфавита
                 {
                     latin = true;
                     t = true;
-                    if (isupper(str[i]))
+                    if (isupper(str[i]))//перебираем на наличие прописных букв
                     {
                         word = true;
                         t = true;
@@ -85,7 +87,7 @@ unsigned int faStr2(const char *str)
             }
             else
             {
-                if (isalpha(str[i]))
+                if (isalpha(str[i]))//перебираем на наличие букв алфавита
                 {
                     latin = true;
                 }
@@ -93,7 +95,7 @@ unsigned int faStr2(const char *str)
                 {
                     latin = false;
                 }
-                if (isupper(str[i]))
+                if (isupper(str[i]))//перебираем на наличие прописных букв
                 {
                     if (z)
                     {
@@ -116,14 +118,14 @@ unsigned int faStr2(const char *str)
     return c;
 }
 
-unsigned int faStr3(const char *str)
+unsigned int faStr3(const char *str)//находит сред длину слова в строке, округляя до цел
 {
     int c = 0;
     int symbol = 0;
     bool word = false;
     for (int i = 0; i < strlen(str); i++)
     {
-        if (isspace(str[i]))
+        if (isspace(str[i]))//ф-ция, проверяющая пробел (меняет character)
         {
             word = false;
         }
@@ -138,5 +140,5 @@ unsigned int faStr3(const char *str)
         }
     }
     float lenght = static_cast<double>(symbol) / c;
-    return round(lenght);
+    return round(lenght);//округляет значение с плавающей запятой до ближайшего целочисленного значения
 }
