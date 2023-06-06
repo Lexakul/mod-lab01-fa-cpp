@@ -7,138 +7,93 @@
 
 unsigned int faStr1(const char *str) //ф-ция в переданной строке определяет слова, не содержащие цифр и подсчитывает кол-во таких слов
 {
-    int c = 0; //кол-во нужных слов
-    bool word = false;
-    bool number = false;
-    for (int i = 0; i < strlen(str); i++)
-    {
-        if (isspace(str[i]))//ф-ция, проверяющая пробел (меняет character)
-        {
-            if (word && !number)
-            {
-                c++;
-            }
-            word = false;
-            number = false;
+   unsigned int noNumber = 0;
+   unsigned int counter = 0;
+    bool wordIn = false;
+
+for(const char* s = str; *s != '\0'; s++) {
+    if (isspace(*s)){ 
+        wordIn = false;
         }
-        else
-        {
-            if (!word)
-            {
-                word = true;
-            }
-            if (isdigit(str[i]))//перебираем на наличие цифр
-            {
-                number = true;
-            }
+    else if(!wordIn){
+    wordIn = true;
+    counter++;
+    bool yesNumber = false;
+    for (const char* r = s; !isspace(*r) && *r != '\0'; r++){
+        if (isdigit(*r)){
+            yesNumber = true;
+    break;
+    }
+    }
+    if (!yesNumber){
+        noNumber++;
         }
     }
-    if (!number && word)
-    {
-        c++;
-    }
-    return c;
+}
+return noNumber;
 }
 
 unsigned int faStr2(const char *str)//ф-ция подсчитывает кол-во слов, начинающихся с загл лат буквы, другие символы только лат строчн в переданной строке
 {
-    int c = 0; //кол-во нужных слов
-    bool word = false;
-    bool latin = false;
-    bool space = false;
-    bool t = true;
-    bool z = false;
-    for (int i = 0; i < strlen(str); i++)
-    {
-        if (isspace(str[i]))//ф-ция, проверяющая пробел (меняет character)
-        {
-            if (latin && word && t)
-            {
-                c++;
-            }
-            word = false;
-            latin = false;
-            space = true;
-        }
-        else
-        {
-            if (space)
-            {
-                space = false;
-                if (isalpha(str[i]))//перебираем на наличие букв алфавита
-                {
-                    latin = true;
-                    t = true;
-                    if (isupper(str[i]))//перебираем на наличие прописных букв
-                    {
-                        word = true;
-                        t = true;
-                        z = true;
-                    }
-                    else
-                    {
-                        t = false;
-                    }
-                }
-                else
-                {
-                    t = false;
-                }
-            }
-            else
-            {
-                if (isalpha(str[i]))//перебираем на наличие букв алфавита
-                {
-                    latin = true;
-                }
-                else
-                {
-                    latin = false;
-                }
-                if (isupper(str[i]))//перебираем на наличие прописных букв
-                {
-                    if (z)
-                    {
-                        word = false;
-                    }
-                    else
-                    {
-                        word = true;
-                        t = true;
-                        z = true;
-                    }
-                }
-            }
-        }
+   unsigned int counter = 0;
+   bool letterUp = false;
+   bool lettersLow = true;
+
+   for(int i = 0; str[i] != '\0'; i++){
+    if (isalpha(str[i])){
+        if (islower(str[i])){
+            lettersLow = true;
+        } else if (isupper(str[i])){
+    if (i == 0){
+    letterUp = true;
+    } else if (isspace(str[i-1])){
+    letterUp = true;
+    } else {
+        letterUp = false;
     }
-    if (latin && word && t)
-    {
-        c++;
+    if (!letterUp){
+        lettersLow = false;
     }
-    return c;
+        }
+    } else if (isspace(str[i])){
+        if (letterUp && lettersLow){
+            counter++
+        }
+        letterUp = false;
+        lettersLow = true;
+    } else {
+        letterUp = false;
+        lettersLow = false;
+    }
+   }
+   if (letterUp && lettersLow){
+    counter++;
+   }
+   return counter;
 }
 
 unsigned int faStr3(const char *str)//находит сред длину слова в строке, округляя до цел
 {
-    int c = 0;
-    int symbol = 0;
+    unsigned int counter = 0;
+    unsigned int wordsSum = 0;
     bool word = false;
-    for (int i = 0; i < strlen(str); i++)
-    {
-        if (isspace(str[i]))//ф-ция, проверяющая пробел (меняет character)
-        {
-            word = false;
-        }
-        else
-        {
-            if (!word)
-            {
+
+    for (int i = 0; i < strlen(str); i++){
+        if (isalpha(str[i])){
+            if (!word){
                 word = true;
-                c++;
-            }
-            symbol++;
+        }
+        counter++;
+    } else {
+        if (word){
+            word = false;
+            wordsSum += counter;
+            counter = 0;
         }
     }
-    float lenght = static_cast<double>(symbol) / c;
-    return round(lenght);//округляет значение с плавающей запятой до ближайшего целочисленного значения
+}
+    if (word) {
+    wordsSum += counter;
+    }
+return round(static_cast<double>(wordsSum) / faStr1(str));
 }
