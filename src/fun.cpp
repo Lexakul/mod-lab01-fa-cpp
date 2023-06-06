@@ -57,7 +57,7 @@ unsigned int faStr2(const char *str)//ф-ция подсчитывает кол-
         }
     } else if (isspace(str[i])){
         if (letterUp && lettersLow){
-            counter++
+            counter++;
         }
         letterUp = false;
         lettersLow = true;
