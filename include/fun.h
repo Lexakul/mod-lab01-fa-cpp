@@ -1,9 +1,10 @@
-// Kuznetsova Angelina 381907-3
+// Copyright 2022 UNN-IASR
 #ifndef INCLUDE_FUN_H_
 #define INCLUDE_FUN_H_
 
-unsigned int faStr1(const char *str);//разработать ф-цию, определяющую в переданной строке слова, не содержащие цифр, и подсчитывающую кол-во таких слов
-unsigned int faStr2(const char *str);//разработать ф-цию, которая подсчитывает кол-во слов в переданной строке, которые начинаются на заглавную лат букву, а среди других символов этих слов только лат строч буквы
-unsigned int faStr3(const char *str);//разработать ф-цию, находящую сред длину слова в строке, округляя до целого
+unsigned int faStr1(const char *str);
+unsigned int faStr2(const char *str);
+unsigned int faStr3(const char *str);
+
 
 #endif

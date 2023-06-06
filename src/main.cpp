@@ -1,14 +1,14 @@
-// Kuznetsova Angelina 381907-3
+// Copyright 2022 UNN-IASR
 //демонстрационная программа
 
 #include <iostream>
-#include "fun.h" //заголовочный файл с заголовком функции.
+#include "fun.h" 
 
 int main()
-{
+ {
     const char *str = "Hello, world!";
-    std::cout << faStr1(str) << std::endl; //ф-ция в переданной строке определяет слова, не содержащие цифр и подсчитывает кол-во таких слов
-    std::cout << faStr2(str) << std::endl; //ф-ция подсчитывает кол-во слов, начинающихся с загл лат буквы, другие символы только лат строчн в переданной строке
-    std::cout << faStr3(str) << std::endl; //находит сред длину слова в строке, округляя до цел
+    std::cout << faStr1(str) << std::endl; 
+    std::cout << faStr2(str) << std::endl; 
+    std::cout << faStr3(str) << std::endl; 
     return 0;
-}
+ }
