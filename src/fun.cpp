@@ -7,36 +7,34 @@
 #include <cctype>
 #include <cmath>
 
-unsigned int faStr1(const char *str) 
-{
+unsigned int faStr1(const char *str) {
    unsigned int noNumber = 0;
    unsigned int counter = 0;
     bool wordIn = false;
 
 for(const char* s = str; *s != '\0'; s++) {
-    if (isspace(*s)){ 
+    if (isspace(*s)) { 
         wordIn = false;
         }
-    else if(!wordIn){
+    else if(!wordIn) {
     wordIn = true;
     counter++;
     bool yesNumber = false;
-    for (const char* r = s; !isspace(*r) && *r != '\0'; r++){
+    for (const char* r = s; !isspace(*r) && *r != '\0'; r++) {
         if (isdigit(*r)) {
             yesNumber = true;
     break;
     }
     }
-    if (!yesNumber){
+    if (!yesNumber) {
         noNumber++;
         }
     }
-}
+ }
 return noNumber;
-}
+ }
 
-unsigned int faStr2(const char *str) 
-{
+unsigned int faStr2(const char *str)  {
    unsigned int counter = 0;
    bool letterUp = false;
    bool lettersLow = true;
@@ -74,8 +72,7 @@ unsigned int faStr2(const char *str)
    return counter;
 }
 
-unsigned int faStr3(const char *str)
-{
+unsigned int faStr3(const char *str) {
     unsigned int counter = 0;
     unsigned int wordsSum = 0;
     bool word = false;
