@@ -8,15 +8,14 @@
 #include <cmath>
 
 unsigned int faStr1(const char *str) {
-   unsigned int noNumber = 0;
-   unsigned int counter = 0;
-    bool wordIn = false;
+unsigned int noNumber = 0;
+unsigned int counter = 0;
+bool wordIn = false;
 
 for(const char* s = str; *s != '\0'; s++) {
-    if (isspace(*s)) { 
+if (isspace(*s)) { 
         wordIn = false;
-        }
-    else if(!wordIn) {
+        } else if (!wordIn) {
     wordIn = true;
     counter++;
     bool yesNumber = false;
@@ -31,15 +30,15 @@ for(const char* s = str; *s != '\0'; s++) {
         }
     }
  }
-return noNumber;
+  return noNumber;
  }
 
 unsigned int faStr2(const char *str)  {
-   unsigned int counter = 0;
-   bool letterUp = false;
-   bool lettersLow = true;
+unsigned int counter = 0;
+bool letterUp = false;
+bool lettersLow = true;
 
-   for(int i = 0; str[i] != '\0'; i++) {
+   for (int i = 0; str[i] != '\0'; i++) {
     if (isalpha(str[i])) {
         if (islower(str[i])) {
             lettersLow = true;
@@ -65,8 +64,8 @@ unsigned int faStr2(const char *str)  {
         letterUp = false;
         lettersLow = false;
     }
-   }
-   if (letterUp && lettersLow) {
+   } 
+  if (letterUp && lettersLow) {
     counter++;
    }
    return counter;
