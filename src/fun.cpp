@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstring>
 #include "fun.h" //заголовочный файл с заголовком функции.
+#include <cctype>
 
 unsigned int faStr1(const char *str) //ф-ция в переданной строке определяет слова, не содержащие цифр и подсчитывает кол-во таких слов
 {
