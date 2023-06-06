@@ -11,3 +11,4 @@ int main() {
     std::cout << faStr3(str) << std::endl;
     return 0;
       }
+      
