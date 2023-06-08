@@ -35,7 +35,7 @@ while (*str) {
 
 unsigned int faStr2(const char *str)  {
 unsigned int counter = 0;
-bool letterO = false, letterT = false; one = false, word = false;
+bool letterO = false, letterT = false, one = false, word = false;
 while (*str) {
     if ((*str != ' ') && (word == false)) {
         word = true;
@@ -48,7 +48,7 @@ while (*str) {
         if ((letterO == true) && (word == true)) {
             if (((*str >= 'a') && (*str <= 'z')) || (one == true)) {
                 letterT = true;
-                if (first == true) {
+                if (one == true) {
                     one = false;
                 }
              } else {
@@ -56,7 +56,7 @@ while (*str) {
                 }
         }
     }
-    if ((*str +== ' ') && (word == true)) {
+    if ((*str == ' ') && (word == true)) {
         if ((letterO == true) && (letterT == true)) {
             counter++;
             word = false;
