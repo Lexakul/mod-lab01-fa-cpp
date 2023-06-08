@@ -84,7 +84,7 @@ while (*str) {
                 word = true;
             }
             wordsSum++;
-        } 
+        }
         if ((*str == ' ') && (word == true)) {
             word = false;
         }
