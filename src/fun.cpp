@@ -8,90 +8,87 @@
 #include <cmath>
 
 unsigned int faStr1(const char *str) {
-unsigned int noNumber = 0;
+unsigned int coNumber = 0;
 unsigned int counter = 0;
-bool wordIn = false;
-
-for(const char* s = str; *s != '\0'; s++) {
-if (isspace(*s)) {
-        wordIn = false;
-        } else if (!wordIn) {
-    wordIn = true;
-    counter++;
-    bool yesNumber = false;
-    for (const char* r = s; !isspace(*r) && *r != '\0'; r++) {
-        if (isdigit(*r)) {
-            yesNumber = true;
-    break;
+bool word = false, wiNumber = false;
+while (*str) {
+    if ((*str != ' ') && (word == false)) {
+        word = true;
+        counter++;
     }
+    if ((*str != ' ') && (*str >= '0') && (*str <= '9')) {
+        wiNumber = true;
     }
-    if (!yesNumber) {
-        noNumber++;
+    if ((*str == ' ') && (word == true)) {
+        if (wiNumber == true) {
+            coNumber++;
+            word = false;
+            wiNumber = false;
+        } else {
+            word = false;
         }
     }
-  }
-  return noNumber;
-  }
+    str++;
+}
+  return (counter - coNumber);
+}
 
 unsigned int faStr2(const char *str)  {
 unsigned int counter = 0;
-bool letterUp = false;
-bool lettersLow = true;
-
-  for (int i = 0; str[i] != '\0'; i++) {
-    if (isalpha(str[i])) {
-        if (islower(str[i])) {
-            lettersLow = true;
-        } else if (isupper(str[i])) {
-    if (i == 0) {
-    letterUp = true;
-    } else if (isspace(str[i-1])) {
-    letterUp = true;
-    } else {
-        letterUp = false;
-    }
-    if (!letterUp) {
-        lettersLow = false;
-    }
+bool letterO = false, letterT = false; one = false, word = false;
+while (*str) {
+    if ((*str != ' ') && (word == false)) {
+        word = true;
+        if ((*str >= 'A') && (*str <= 'Z')) {
+            letterO = true;
+            letterT = true;
         }
-    } else if (isspace(str[i])) {
-        if (letterUp && lettersLow) {
+    }
+    if (*str != ' ') {
+        if ((letterO == true) && (word == true)) {
+            if (((*str >= 'a') && (*str <= 'z')) || (one == true)) {
+                letterT = true;
+                if (first == true) {
+                    one = false;
+                }
+             } else {
+                letterT = false;
+                }
+        }
+    }
+    if ((*str +== ' ') && (word == true)) {
+        if ((letterO == true) && (letterT == true)) {
             counter++;
+            word = false;
+            letterO = false;
+            letterT = false;
+        } else {
+        word = false;
+        letterO = false;
+        letterT = false;
         }
-        letterUp = false;
-        lettersLow = true;
-    } else {
-        letterUp = false;
-        lettersLow = false;
     }
-  }
-  if (letterUp && lettersLow) {
-    counter++;
-  }
+    str++;
+    }
   return counter;
 }
 
 unsigned int faStr3(const char *str) {
-    unsigned int counter = 0;
-    unsigned int wordsSum = 0;
-    bool word = false;
-
-    for (int i = 0; i < strlen(str); i++) {
-        if (isalpha(str[i])) {
-            if (!word) {
+unsigned int counter = 0;
+unsigned int wordsSum = 0;
+bool word = false;
+while (*str) {
+        if (*str != ' ') {
+            if (word == false) {
+                counter++;
                 word = true;
-        }
-        counter++;
-    } else {
-        if (word) {
+            }
+            wordsSum++;
+        } 
+        if ((*str == ' ') && (word == true)) {
             word = false;
-            wordsSum += counter;
-            counter = 0;
         }
-    }
+        str++;
 }
-    if (word) {
-    wordsSum += counter;
-    }
-return round(static_cast<double>(wordsSum) / faStr1(str));
+    return (wordsSum + 1) / counter;
 }
